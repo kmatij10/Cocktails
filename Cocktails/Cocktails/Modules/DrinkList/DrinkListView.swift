@@ -7,17 +7,24 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct DrinkListView: View {
     @StateObject var viewModel: DrinkListViewModel
+    @State private var searchText = ""
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List {
+            HeaderView(searchText: $searchText)
+                .onChange(of: searchText) {
+                    viewModel.onSearch(string: searchText)
+                }
+            ForEach(viewModel.drinks) { model in
+                DrinkCell(model: model)
+            }
+            .listRowSeparator(.hidden)
         }
-        .padding()
+        .listRowInsets(EdgeInsets())
+        .listStyle(.plain)
     }
 }

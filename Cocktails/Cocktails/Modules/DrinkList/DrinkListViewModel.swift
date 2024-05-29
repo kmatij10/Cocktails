@@ -11,18 +11,36 @@ import RxSwift
 
 final class DrinkListViewModel: ObservableObject {
     
-    @Published var drinks: [Drink] = []
+    @Published var drinks: [DrinkCellModel] = []
+    
+    private let searchText = BehaviorSubject<String>(value: "")
     private let disposeBag = DisposeBag()
     
     private let service: Service.Cocktails
 
     init(service: Service.Cocktails = .shared) {
         self.service = service
-        
-        service
-            .getDrinks(search: "")
-            .asObservable()
-            .map { $0.drinks }
+        setupBinding()
+    }
+    
+    func onSearch(string: String) {
+        searchText.onNext(string)
+    }
+}
+
+private extension DrinkListViewModel {
+    
+    func setupBinding() {
+        searchText
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .flatMapLatest { [weak self] searchText -> Observable<[DrinkCellModel]> in
+                guard let self else { return Observable.just([]) }
+                return service
+                    .getDrinks(search: searchText)
+                    .asObservable()
+                    .map { $0.drinks.map { DrinkCellModel(model: $0) } }
+            }
             .subscribe(onNext: { [weak self] in
                 self?.drinks = $0
             })

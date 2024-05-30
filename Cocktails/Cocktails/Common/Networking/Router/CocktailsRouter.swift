@@ -35,4 +35,13 @@ extension Router {
             return Router(path: path, params: [Constants.QueryParameters.id: id])
         }
     }
+    
+    enum CocktailsFilters {
+        
+        static let path = "/list.php"
+        
+        static func filter(type: FilterType) -> Router {
+            return Router(path: path, params: [type.rawValue: "list"])
+        }
+    }
 }

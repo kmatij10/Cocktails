@@ -21,10 +21,11 @@ struct DrinkTagsView: View {
                         Color.gray
                             .clipShape(Circle())
                             .frame(width: 50, height: 50)
-                        Image(systemName: "paintbrush")
+                        Image.categoryImage
                             .resizable()
                             .foregroundColor(.black)
-                            .frame(width: 30, height: 30)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
                     }
                     Text(category)
                         .multilineTextAlignment(.center)
@@ -36,10 +37,11 @@ struct DrinkTagsView: View {
                         Color.gray
                             .clipShape(Circle())
                             .frame(width: 50, height: 50)
-                        Image(systemName: "paintbrush")
+                        Image.glassImage
                             .resizable()
                             .foregroundColor(.black)
-                            .frame(width: 30, height: 30)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
                     }
                     Text(glass)
                         .multilineTextAlignment(.center)
@@ -51,10 +53,11 @@ struct DrinkTagsView: View {
                         Color.gray
                             .clipShape(Circle())
                             .frame(width: 50, height: 50)
-                        Image(systemName: "paintbrush")
+                        Image.alcoholicImage
                             .resizable()
                             .foregroundColor(.black)
-                            .frame(width: 30, height: 30)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
                     }
                     Text(alcoholic)
                         .multilineTextAlignment(.center)

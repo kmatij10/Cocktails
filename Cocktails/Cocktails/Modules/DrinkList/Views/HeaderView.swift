@@ -11,6 +11,7 @@ import SwiftUI
 struct HeaderView: View {
     @Binding var searchText: String
     let onSearch: (String) -> Void
+    let filterAction: () -> Void
     
     @State private var isFocused = false
     
@@ -24,10 +25,12 @@ struct HeaderView: View {
                     onSearch: onSearch
                 )
                 if !isFocused {
-                    Image.filterImage
-                        .resizable()
-                        .frame(width: 18, height: 18)
-                        .padding(.leading, 10)
+                    Button(action: filterAction) {
+                        Image.filterImage
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .padding(6)
+                    }
                 }
             }
             .animation(.easeInOut(duration: 0.5), value: isFocused)

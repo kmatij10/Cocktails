@@ -12,6 +12,9 @@ protocol DrinksServiceProtocol {
     func getDrinks(search: String) -> Single<Drinks>
     func getRandomDrink() -> Single<Drinks>
     func getDrink(id: String) -> Single<Drinks>
+    func getCategories() -> Single<CategoryList>
+    func getGlass() -> Single<GlassList>
+    func getAlcoholic() -> Single<AlcoholicList>
 }
 
 extension Service {
@@ -43,5 +46,20 @@ extension Service.Cocktails: DrinksServiceProtocol {
     func getDrink(id: String) -> Single<Drinks> {
         return service
             .request(Drinks.self, router: .CocktailsLookup.drink(with: id))
+    }
+    
+    func getCategories() -> Single<CategoryList> {
+        return service
+            .request(CategoryList.self, router: .CocktailsFilters.filter(type: .category))
+    }
+    
+    func getGlass() -> Single<GlassList> {
+        return service
+            .request(GlassList.self, router: .CocktailsFilters.filter(type: .glass))
+    }
+    
+    func getAlcoholic() -> Single<AlcoholicList> {
+        return service
+            .request(AlcoholicList.self, router: .CocktailsFilters.filter(type: .alcoholic))
     }
 }

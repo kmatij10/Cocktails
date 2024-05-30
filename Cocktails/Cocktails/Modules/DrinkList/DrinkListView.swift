@@ -13,6 +13,7 @@ struct DrinkListView: View {
     @StateObject var viewModel: DrinkListViewModel
     @State private var searchText = ""
     @State private var showDetails = false
+    @State private var showFilters = false
     @State private var drinkDetailsModelId: String?
     @State private var detailViewModelKey = UUID()
     
@@ -20,7 +21,13 @@ struct DrinkListView: View {
         VStack(spacing: 0) {
             switch viewModel.contentType {
             case .content(let drinks):
-                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                HeaderView(
+                    searchText: $searchText,
+                    onSearch: viewModel.onSearch(string:),
+                    filterAction: {
+                        showFilters = true
+                    }
+                )
                 ZStack(alignment: .bottom) {
                     createcontent(drinks: drinks)
                     DrinkMainButtonView(
@@ -37,10 +44,22 @@ struct DrinkListView: View {
             case .loading:
                 EmptyDrinkView(title: "Something yummy is on your way!")
             case .error:
-                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                HeaderView(
+                    searchText: $searchText,
+                    onSearch: viewModel.onSearch(string:),
+                    filterAction: {
+                        showFilters = true
+                    }
+                )
                 EmptyDrinkView(title: "Something went wrong!")
             case .empty:
-                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                HeaderView(
+                    searchText: $searchText,
+                    onSearch: viewModel.onSearch(string:),
+                    filterAction: {
+                        showFilters = true
+                    }
+                )
                 EmptyDrinkView(title: "There are no drinks at the moment!")
             }
         }
@@ -52,6 +71,13 @@ struct DrinkListView: View {
             destination: {
                 let viewModel = DrinkDetailsViewModel(id: drinkDetailsModelId)
                 DrinkDetailView(viewModel: viewModel, key: detailViewModelKey)
+            }
+        )
+        .navigationDestination(
+            isPresented: $showFilters,
+            destination: {
+                let viewModel = FiltersViewModel()
+                FiltersView(viewModel: viewModel)
             }
         )
     }

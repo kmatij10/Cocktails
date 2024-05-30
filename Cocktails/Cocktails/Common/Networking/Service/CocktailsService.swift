@@ -8,8 +8,9 @@
 import Foundation
 import RxSwift
 
-protocol BetshopsServiceProtocol {
+protocol DrinksServiceProtocol {
     func getDrinks(search: String) -> Single<Drinks>
+    func getRandomDrink() -> Single<Drinks>
 }
 
 extension Service {
@@ -26,10 +27,15 @@ extension Service {
     }
 }
 
-extension Service.Cocktails: BetshopsServiceProtocol {
+extension Service.Cocktails: DrinksServiceProtocol {
     
     func getDrinks(search: String) -> Single<Drinks> {
         return service
             .request(Drinks.self, router: .CocktailsSearch.all(with: search))
+    }
+    
+    func getRandomDrink() -> Single<Drinks> {
+        return service
+            .request(Drinks.self, router: .CocktailsRandom.drink())
     }
 }

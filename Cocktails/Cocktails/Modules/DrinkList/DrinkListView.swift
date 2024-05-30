@@ -20,7 +20,17 @@ struct DrinkListView: View {
             switch viewModel.contentType {
             case .content(let drinks):
                 HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
-                createcontent(drinks: drinks)
+                ZStack(alignment: .bottom) {
+                    createcontent(drinks: drinks)
+                    DrinkMainButtonView(
+                        title: "FEELING LUCKY",
+                        action: {
+                            viewModel.getRandomDrink()
+                        }
+                    )
+                    .padding(.bottom, 50)
+                    .padding(.horizontal, 24)
+                }
             case .loading:
                 EmptyDrinkView(title: "Something yummy is on your way!")
             case .error:
@@ -38,6 +48,13 @@ struct DrinkListView: View {
             isPresented: $showDetails,
             destination: {
                 let viewModel = DrinkDetailsViewModel(drink: drinkDetailsModel)
+                DrinkDetailView(viewModel: viewModel)
+            }
+        )
+        .navigationDestination(
+            isPresented: $viewModel.showRandomDetails,
+            destination: {
+                let viewModel = DrinkDetailsViewModel(drink: viewModel.drink)
                 DrinkDetailView(viewModel: viewModel)
             }
         )

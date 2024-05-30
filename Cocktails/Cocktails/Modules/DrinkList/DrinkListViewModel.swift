@@ -13,6 +13,8 @@ import RxCocoa
 final class DrinkListViewModel: ObservableObject {
     
     @Published var contentType: DrinkListContentType = .loading
+    @Published var drink: Drink?
+    @Published var showRandomDetails = false
     
     private let searchText = BehaviorSubject<String>(value: "")
     private let disposeBag = DisposeBag()
@@ -26,6 +28,10 @@ final class DrinkListViewModel: ObservableObject {
     
     func onSearch(string: String) {
         searchText.onNext(string)
+    }
+    
+    func getRandomDrink() {
+        fetchRandomDrink()
     }
 }
 
@@ -51,6 +57,18 @@ private extension DrinkListViewModel {
             .asDriver(onErrorJustReturn: .error)
             .drive(onNext: { [weak self] in
                 self?.contentType = $0
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func fetchRandomDrink() {
+        service
+            .getRandomDrink()
+            .asObservable()
+            .map { $0.drinks?.first }
+            .subscribe(onNext: { [weak self] drink in
+                self?.drink = drink
+                self?.showRandomDetails = true
             })
             .disposed(by: disposeBag)
     }

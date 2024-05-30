@@ -26,6 +26,7 @@
 		7183EABD2C08E3AE00DBD7C2 /* FiltersContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EABC2C08E3AE00DBD7C2 /* FiltersContentType.swift */; };
 		7183EAC02C08E42C00DBD7C2 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EABF2C08E42C00DBD7C2 /* RadioButtonView.swift */; };
 		7183EAC22C08E45C00DBD7C2 /* FilterSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EAC12C08E45C00DBD7C2 /* FilterSectionView.swift */; };
+		7183EAC52C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EAC42C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift */; };
 		71A7875C2C078E3E0090E59D /* CocktailsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7875B2C078E3E0090E59D /* CocktailsApp.swift */; };
 		71A787632C078E3E0090E59D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A787622C078E3E0090E59D /* Preview Assets.xcassets */; };
 		71A7876D2C078E3F0090E59D /* CocktailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7876C2C078E3F0090E59D /* CocktailsTests.swift */; };
@@ -94,6 +95,7 @@
 		7183EABC2C08E3AE00DBD7C2 /* FiltersContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersContentType.swift; sourceTree = "<group>"; };
 		7183EABF2C08E42C00DBD7C2 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
 		7183EAC12C08E45C00DBD7C2 /* FilterSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSectionView.swift; sourceTree = "<group>"; };
+		7183EAC42C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatterManagerTest.swift; sourceTree = "<group>"; };
 		71A787582C078E3E0090E59D /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A7875B2C078E3E0090E59D /* CocktailsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsApp.swift; sourceTree = "<group>"; };
 		71A787622C078E3E0090E59D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -201,6 +203,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7183EAC32C08E9B400DBD7C2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7183EAC42C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		71A7874F2C078E3E0090E59D = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		71A7876B2C078E3F0090E59D /* CocktailsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7183EAC32C08E9B400DBD7C2 /* Common */,
 				71A7876C2C078E3F0090E59D /* CocktailsTests.swift */,
 			);
 			path = CocktailsTests;
@@ -594,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A7876D2C078E3F0090E59D /* CocktailsTests.swift in Sources */,
+				7183EAC52C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

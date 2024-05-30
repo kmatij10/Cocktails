@@ -11,6 +11,7 @@ import Kingfisher
 
 struct DrinkCell: View {
     let model: Drink
+    let action: () -> Void
     
     var body: some View {
         HStack(alignment: .center, spacing: 24) {
@@ -42,5 +43,8 @@ struct DrinkCell: View {
         }
         .padding(12)
         .background(Color.white)
+        .onTapGesture {
+            action()
+        }
     }
 }

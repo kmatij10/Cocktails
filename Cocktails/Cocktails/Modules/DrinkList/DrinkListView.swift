@@ -12,6 +12,8 @@ import Kingfisher
 struct DrinkListView: View {
     @StateObject var viewModel: DrinkListViewModel
     @State private var searchText = ""
+    @State private var showDetails = false
+    @State private var drinkDetailsModel: Drink?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,14 +34,30 @@ struct DrinkListView: View {
         .scrollDismissesKeyboard(.immediately)
         .background(Color.white)
         .edgesIgnoringSafeArea(.all)
+        .navigationDestination(
+            isPresented: $showDetails,
+            destination: {
+                let viewModel = DrinkDetailsViewModel(drink: drinkDetailsModel)
+                DrinkDetailView(viewModel: viewModel)
+            }
+        )
     }
+}
+
+private extension DrinkListView {
     
     @ViewBuilder
     func createcontent(drinks: [Drink]) -> some View {
         List {
             ForEach(drinks) { model in
-                DrinkCell(model: model)
-                    .listRowInsets(EdgeInsets())
+                DrinkCell(
+                    model: model,
+                    action: {
+                        drinkDetailsModel = model
+                        showDetails = true
+                    }
+                )
+                .listRowInsets(EdgeInsets())
             }
             .listRowSeparator(.hidden)
         }

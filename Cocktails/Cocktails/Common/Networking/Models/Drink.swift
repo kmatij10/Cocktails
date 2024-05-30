@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Drink: Decodable, Identifiable {
     let id: String
     let drinkName: String?
@@ -29,13 +27,13 @@ struct Drink: Decodable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(String.self, forKey: .idDrink)
-        self.drinkName = try container.decodeIfPresent(String.self, forKey: .strDrink)
-        self.category = try container.decodeIfPresent(String.self, forKey: .strCategory)
-        self.alcoholic = try container.decodeIfPresent(String.self, forKey: .strAlcoholic)
-        self.glass = try container.decodeIfPresent(String.self, forKey: .strGlass)
-        self.instructions = try container.decodeIfPresent(String.self, forKey: .strInstructions)
-        self.drinkImage = try container.decodeIfPresent(String.self, forKey: .strDrinkThumb)
-        self.dateModified = try container.decodeIfPresent(String.self, forKey: .dateModified)
+        self.drinkName = try? container.decodeIfPresent(String.self, forKey: .strDrink)
+        self.category = try? container.decodeIfPresent(String.self, forKey: .strCategory)
+        self.alcoholic = try? container.decodeIfPresent(String.self, forKey: .strAlcoholic)
+        self.glass = try? container.decodeIfPresent(String.self, forKey: .strGlass)
+        self.instructions = try? container.decodeIfPresent(String.self, forKey: .strInstructions)
+        self.drinkImage = try? container.decodeIfPresent(String.self, forKey: .strDrinkThumb)
+        self.dateModified = try? container.decodeIfPresent(String.self, forKey: .dateModified)
 
         var ingredients: [String] = []
         var measures: [String] = []
@@ -46,11 +44,11 @@ struct Drink: Decodable, Identifiable {
             let ingredientKey = DynamicCodingKey(stringValue: "strIngredient\(i)")
             let measureKey = DynamicCodingKey(stringValue: "strMeasure\(i)")
                     
-            if let ingredient = try dynamicContainer.decodeIfPresent(String.self, forKey: ingredientKey) {
+            if let ingredient = try? dynamicContainer.decodeIfPresent(String.self, forKey: ingredientKey) {
                 ingredients.append(ingredient)
             }
                     
-            if let measure = try dynamicContainer.decodeIfPresent(String.self, forKey: measureKey) {
+            if let measure = try? dynamicContainer.decodeIfPresent(String.self, forKey: measureKey) {
                 measures.append(measure)
             }
         }
@@ -61,6 +59,10 @@ struct Drink: Decodable, Identifiable {
 }
 
 extension Drink {
+    
+    var ingredientsWithMeasures: [String] {
+        return zip(measures, ingredients).map { "\($0.trimmingCharacters(in: .whitespacesAndNewlines)) \($1.trimmingCharacters(in: .whitespacesAndNewlines))" }
+    }
     
     var ingredientsPreview: String {
         ingredients.joined(separator: ", ")

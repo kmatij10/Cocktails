@@ -10,7 +10,7 @@ import SwiftUI
 import Kingfisher
 
 struct DrinkCell: View {
-    let model: DrinkCellModel
+    let model: Drink
     
     var body: some View {
         HStack(alignment: .center, spacing: 24) {
@@ -26,17 +26,17 @@ struct DrinkCell: View {
                 .clipped()
                 .frame(width: 88, alignment: .leading)
             
-            VStack(alignment: .leading, spacing: 8) {
-                if let name = model.name {
+            VStack(alignment: .leading, spacing: 5) {
+                if let name = model.drinkName {
                     Text(name)
                         .lineLimit(2)
                         .foregroundColor(.black)
+                        .fontWeight(.bold)
                 }
-                if let des = model.desc {
-                    Text(des)
-                        .lineLimit(2)
-                        .foregroundColor(.black)
-                }
+                Text(model.ingredientsPreview)
+                    .lineLimit(2)
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

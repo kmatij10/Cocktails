@@ -37,5 +37,6 @@ struct HeaderView: View {
         }
         .background(Color.blue)
         .foregroundColor(.white)
+        .padding(.top, 40)
     }
 }

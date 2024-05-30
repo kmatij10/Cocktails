@@ -8,10 +8,11 @@
 import Foundation
 import SwiftUI
 import RxSwift
+import RxCocoa
 
 final class DrinkListViewModel: ObservableObject {
     
-    @Published var drinks: [DrinkCellModel] = []
+    @Published var contentType: DrinkListContentType = .loading
     
     private let searchText = BehaviorSubject<String>(value: "")
     private let disposeBag = DisposeBag()
@@ -34,15 +35,22 @@ private extension DrinkListViewModel {
         searchText
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .flatMapLatest { [weak self] searchText -> Observable<[DrinkCellModel]> in
-                guard let self else { return Observable.just([]) }
+            .flatMapLatest { [weak self] searchText -> Observable<DrinkListContentType> in
+                guard let self else { return Observable.just(.error) }
                 return service
                     .getDrinks(search: searchText)
                     .asObservable()
-                    .map { $0.drinks?.map { DrinkCellModel(model: $0) } ?? [] }
+                    .map { model in
+                        if let drinks = model.drinks {
+                            return .content(drinks: drinks)
+                        } else {
+                            return .empty
+                        }
+                    }
             }
-            .subscribe(onNext: { [weak self] in
-                self?.drinks = $0
+            .asDriver(onErrorJustReturn: .error)
+            .drive(onNext: { [weak self] in
+                self?.contentType = $0
             })
             .disposed(by: disposeBag)
     }

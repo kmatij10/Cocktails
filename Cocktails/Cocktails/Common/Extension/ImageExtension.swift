@@ -13,4 +13,5 @@ extension Image {
     static let searchCancel = Image("searchCancel")
     static let searchImage = Image("searchImage")
     static let filterImage = Image("filterImage")
+    static let cocktailImage = Image("cocktailImage")
 }

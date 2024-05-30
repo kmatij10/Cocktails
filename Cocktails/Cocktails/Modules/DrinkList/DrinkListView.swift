@@ -15,21 +15,35 @@ struct DrinkListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
-            List {
-                ForEach(viewModel.drinks) { model in
-                    DrinkCell(model: model)
-                        .listRowInsets(EdgeInsets())
-                }
-                .listRowSeparator(.hidden)
+            switch viewModel.contentType {
+            case .content(let drinks):
+                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                createcontent(drinks: drinks)
+            case .loading:
+                EmptyDrinkView(title: "Something yummy is on your way!")
+            case .error:
+                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                EmptyDrinkView(title: "Something went wrong!")
+            case .empty:
+                HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+                EmptyDrinkView(title: "There are no drinks at the moment!")
             }
-            .padding(.bottom, 30)
-            .background(Color.white)
-            .listStyle(.plain)
         }
         .scrollDismissesKeyboard(.immediately)
-        .padding(.top, 40)
         .background(Color.white)
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    @ViewBuilder
+    func createcontent(drinks: [Drink]) -> some View {
+        List {
+            ForEach(drinks) { model in
+                DrinkCell(model: model)
+                    .listRowInsets(EdgeInsets())
+            }
+            .listRowSeparator(.hidden)
+        }
+        .padding(.bottom, 30)
+        .listStyle(.plain)
     }
 }

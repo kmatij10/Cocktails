@@ -26,4 +26,13 @@ extension Router {
             return Router(path: path)
         }
     }
+    
+    enum CocktailsLookup {
+        
+        static let path = "/lookup.php"
+        
+        static func drink(with id: String) -> Router {
+            return Router(path: path, params: [Constants.QueryParameters.id: id])
+        }
+    }
 }

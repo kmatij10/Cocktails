@@ -13,7 +13,7 @@ struct DrinkListView: View {
     @StateObject var viewModel: DrinkListViewModel
     @State private var searchText = ""
     @State private var showDetails = false
-    @State private var drinkDetailsModel: Drink?
+    @State private var drinkDetailsModelId: String?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -25,7 +25,8 @@ struct DrinkListView: View {
                     DrinkMainButtonView(
                         title: "FEELING LUCKY",
                         action: {
-                            viewModel.getRandomDrink()
+                            drinkDetailsModelId = nil
+                            showDetails = true
                         }
                     )
                     .padding(.bottom, 50)
@@ -47,14 +48,7 @@ struct DrinkListView: View {
         .navigationDestination(
             isPresented: $showDetails,
             destination: {
-                let viewModel = DrinkDetailsViewModel(drink: drinkDetailsModel)
-                DrinkDetailView(viewModel: viewModel)
-            }
-        )
-        .navigationDestination(
-            isPresented: $viewModel.showRandomDetails,
-            destination: {
-                let viewModel = DrinkDetailsViewModel(drink: viewModel.drink)
+                let viewModel = DrinkDetailsViewModel(id: drinkDetailsModelId)
                 DrinkDetailView(viewModel: viewModel)
             }
         )
@@ -70,7 +64,7 @@ private extension DrinkListView {
                 DrinkCell(
                     model: model,
                     action: {
-                        drinkDetailsModel = model
+                        drinkDetailsModelId = model.id
                         showDetails = true
                     }
                 )

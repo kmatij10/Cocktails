@@ -15,5 +15,6 @@ enum Constants {
     
     enum QueryParameters {
         static let search = "s"
+        static let id = "i"
     }
 }

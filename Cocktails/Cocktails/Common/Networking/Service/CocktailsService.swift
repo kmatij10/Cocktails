@@ -11,6 +11,7 @@ import RxSwift
 protocol DrinksServiceProtocol {
     func getDrinks(search: String) -> Single<Drinks>
     func getRandomDrink() -> Single<Drinks>
+    func getDrink(id: String) -> Single<Drinks>
 }
 
 extension Service {
@@ -37,5 +38,10 @@ extension Service.Cocktails: DrinksServiceProtocol {
     func getRandomDrink() -> Single<Drinks> {
         return service
             .request(Drinks.self, router: .CocktailsRandom.drink())
+    }
+    
+    func getDrink(id: String) -> Single<Drinks> {
+        return service
+            .request(Drinks.self, router: .CocktailsLookup.drink(with: id))
     }
 }

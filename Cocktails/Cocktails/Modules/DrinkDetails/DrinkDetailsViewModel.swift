@@ -14,15 +14,21 @@ final class DrinkDetailsViewModel: ObservableObject {
     @Published var contentType: DrinkDetailsContentType = .loading
     @Published var drinkTitle: String?
     private let service: Service.Cocktails
+    private let timeFormatterManager: TimeFormatterManagerInterface
     private let disposeBag = DisposeBag()
 
-    init(id: String?, service: Service.Cocktails = .shared) {
+    init(id: String?, service: Service.Cocktails = .shared, timeFormatterManager: TimeFormatterManager = .shared) {
+        self.timeFormatterManager = timeFormatterManager
         self.service = service
         if let id {
             fetchDrink(id: id)
         } else {
             fetchRandomDrink()
         }
+    }
+    
+    func formattedTimestamp(from date: String?) -> String {
+        timeFormatterManager.formattedTimestamp(from: date)
     }
 }
 

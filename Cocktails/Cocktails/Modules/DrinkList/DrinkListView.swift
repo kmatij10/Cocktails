@@ -14,6 +14,7 @@ struct DrinkListView: View {
     @State private var searchText = ""
     @State private var showDetails = false
     @State private var drinkDetailsModelId: String?
+    @State private var detailViewModelKey = UUID()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,6 +27,7 @@ struct DrinkListView: View {
                         title: "FEELING LUCKY",
                         action: {
                             drinkDetailsModelId = nil
+                            detailViewModelKey = UUID()
                             showDetails = true
                         }
                     )
@@ -49,7 +51,7 @@ struct DrinkListView: View {
             isPresented: $showDetails,
             destination: {
                 let viewModel = DrinkDetailsViewModel(id: drinkDetailsModelId)
-                DrinkDetailView(viewModel: viewModel)
+                DrinkDetailView(viewModel: viewModel, key: detailViewModelKey)
             }
         )
     }
@@ -65,6 +67,7 @@ private extension DrinkListView {
                     model: model,
                     action: {
                         drinkDetailsModelId = model.id
+                        detailViewModelKey = UUID()
                         showDetails = true
                     }
                 )

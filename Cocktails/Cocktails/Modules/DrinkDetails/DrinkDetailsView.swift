@@ -11,6 +11,7 @@ import SwiftUI
 struct DrinkDetailView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: DrinkDetailsViewModel
+    let key: UUID
     
     var body: some View {
         VStack(spacing: 0) {
@@ -49,7 +50,7 @@ private extension DrinkDetailView {
                     DrinkDividerView()
                     DrinkInstructionsView(instructions: drink.instructions ?? "")
                     DrinkDividerView()
-                    DrinkTimestampView()
+                    DrinkTimestampView(timestamp: viewModel.formattedTimestamp(from: drink.dateModified))
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .background(Color.white)

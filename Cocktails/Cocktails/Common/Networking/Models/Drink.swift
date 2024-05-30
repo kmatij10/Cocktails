@@ -21,5 +21,5 @@ struct Drink: Codable {
 }
 
 struct Drinks: Codable {
-    let drinks: [Drink]
+    let drinks: [Drink]?
 }

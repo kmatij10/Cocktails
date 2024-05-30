@@ -39,7 +39,7 @@ private extension DrinkListViewModel {
                 return service
                     .getDrinks(search: searchText)
                     .asObservable()
-                    .map { $0.drinks.map { DrinkCellModel(model: $0) } }
+                    .map { $0.drinks?.map { DrinkCellModel(model: $0) } ?? [] }
             }
             .subscribe(onNext: { [weak self] in
                 self?.drinks = $0

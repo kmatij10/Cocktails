@@ -20,6 +20,8 @@
 		71CDFF0A2C07BDCC0091FC62 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CDFF092C07BDCC0091FC62 /* HeaderView.swift */; };
 		71CDFF0D2C07BDF10091FC62 /* DrinkCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CDFF0C2C07BDF10091FC62 /* DrinkCellModel.swift */; };
 		71CDFF0F2C07BE230091FC62 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CDFF0E2C07BE230091FC62 /* DrinkCell.swift */; };
+		71CDFF122C0869320091FC62 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CDFF112C0869320091FC62 /* ImageExtension.swift */; };
+		71CDFF142C08732F0091FC62 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CDFF132C08732F0091FC62 /* SearchBarView.swift */; };
 		71EFC4A72C079125008531C8 /* CocktailsSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFC4A62C079125008531C8 /* CocktailsSessionManager.swift */; };
 		71EFC4AA2C079160008531C8 /* ReactiveDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFC4A92C079160008531C8 /* ReactiveDataRequest.swift */; };
 		71EFC4AD2C0791AE008531C8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EFC4AC2C0791AE008531C8 /* Service.swift */; };
@@ -63,6 +65,8 @@
 		71CDFF092C07BDCC0091FC62 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		71CDFF0C2C07BDF10091FC62 /* DrinkCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCellModel.swift; sourceTree = "<group>"; };
 		71CDFF0E2C07BE230091FC62 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
+		71CDFF112C0869320091FC62 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		71CDFF132C08732F0091FC62 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		71EFC4A62C079125008531C8 /* CocktailsSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsSessionManager.swift; sourceTree = "<group>"; };
 		71EFC4A92C079160008531C8 /* ReactiveDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveDataRequest.swift; sourceTree = "<group>"; };
 		71EFC4AC2C0791AE008531C8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				71CDFF092C07BDCC0091FC62 /* HeaderView.swift */,
 				71CDFF0E2C07BE230091FC62 /* DrinkCell.swift */,
+				71CDFF132C08732F0091FC62 /* SearchBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +182,14 @@
 				71CDFF0C2C07BDF10091FC62 /* DrinkCellModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71CDFF102C0869220091FC62 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				71CDFF112C0869320091FC62 /* ImageExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		71EFC4A02C079073008531C8 /* Supporting */ = {
@@ -190,6 +203,7 @@
 		71EFC4A12C079083008531C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				71CDFF102C0869220091FC62 /* Extension */,
 				71EFC4A42C0790E4008531C8 /* Networking */,
 			);
 			path = Common;
@@ -272,8 +286,8 @@
 			children = (
 				71CDFF0B2C07BDE50091FC62 /* Models */,
 				71CDFF082C07BDBC0091FC62 /* Views */,
-				71EFC4BB2C0796E3008531C8 /* DrinkListViewModel.swift */,
 				71EFC4BD2C0796ED008531C8 /* DrinkListView.swift */,
+				71EFC4BB2C0796E3008531C8 /* DrinkListViewModel.swift */,
 			);
 			path = DrinkList;
 			sourceTree = "<group>";
@@ -434,6 +448,8 @@
 				71EFC4C02C07977E008531C8 /* CocktailsService.swift in Sources */,
 				71CDFF0D2C07BDF10091FC62 /* DrinkCellModel.swift in Sources */,
 				71CDFF0A2C07BDCC0091FC62 /* HeaderView.swift in Sources */,
+				71CDFF142C08732F0091FC62 /* SearchBarView.swift in Sources */,
+				71CDFF122C0869320091FC62 /* ImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

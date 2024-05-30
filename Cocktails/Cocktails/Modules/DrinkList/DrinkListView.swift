@@ -14,17 +14,22 @@ struct DrinkListView: View {
     @State private var searchText = ""
     
     var body: some View {
-        List {
-            HeaderView(searchText: $searchText)
-                .onChange(of: searchText) {
-                    viewModel.onSearch(string: searchText)
+        VStack(spacing: 0) {
+            HeaderView(searchText: $searchText, onSearch: viewModel.onSearch(string:))
+            List {
+                ForEach(viewModel.drinks) { model in
+                    DrinkCell(model: model)
+                        .listRowInsets(EdgeInsets())
                 }
-            ForEach(viewModel.drinks) { model in
-                DrinkCell(model: model)
+                .listRowSeparator(.hidden)
             }
-            .listRowSeparator(.hidden)
+            .padding(.bottom, 30)
+            .background(Color.white)
+            .listStyle(.plain)
         }
-        .listRowInsets(EdgeInsets())
-        .listStyle(.plain)
+        .scrollDismissesKeyboard(.immediately)
+        .padding(.top, 40)
+        .background(Color.white)
+        .edgesIgnoringSafeArea(.all)
     }
 }

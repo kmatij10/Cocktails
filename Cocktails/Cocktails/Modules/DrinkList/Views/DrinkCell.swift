@@ -17,7 +17,7 @@ struct DrinkCell: View {
             KFImage(model.imageUrl)
                 .resizable()
                 .placeholder {
-                    Color.green
+                    Color.gray
                 }
                 .fade(duration: 0.5)
                 .cancelOnDisappear(true)
@@ -41,5 +41,6 @@ struct DrinkCell: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(12)
+        .background(Color.white)
     }
 }

@@ -9,16 +9,15 @@ import Foundation
 import SwiftUI
 
 struct DrinkDetailView: View {
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel: DrinkDetailsViewModel
-    let key: UUID
+    @EnvironmentObject private var navigationRouter: NavigationRouter
     
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationView(
                 title: viewModel.drinkTitle ?? "",
                 backButtonClick: {
-                    presentationMode.wrappedValue.dismiss()
+                    navigationRouter.pop()
                 }
             )
             switch viewModel.contentType {

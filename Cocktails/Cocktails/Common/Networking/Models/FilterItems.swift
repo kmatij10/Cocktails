@@ -12,7 +12,7 @@ protocol FilterItem {
     var title: String? { get }
 }
 
-struct CategoryItem: Decodable, Identifiable, FilterItem {
+struct CategoryItem: Decodable, Identifiable, Equatable, FilterItem {
     var id = UUID()
     let strCategory: String?
 
@@ -29,7 +29,7 @@ struct CategoryList: Decodable {
     let drinks: [CategoryItem]?
 }
 
-struct GlassItem: Decodable, Identifiable, FilterItem {
+struct GlassItem: Decodable, Identifiable, Equatable, FilterItem {
     var id = UUID()
     let strGlass: String?
 
@@ -46,7 +46,7 @@ struct GlassList: Decodable {
     let drinks: [GlassItem]?
 }
 
-struct AlcoholicItem: Decodable, Identifiable, FilterItem {
+struct AlcoholicItem: Decodable, Identifiable, Equatable, FilterItem {
     var id = UUID()
     let strAlcoholic: String?
 

@@ -12,14 +12,14 @@ import SwiftUI
 
 struct FiltersView: View {
     @ObservedObject var viewModel = FiltersViewModel()
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject private var navigationRouter: NavigationRouter
     
     var body: some View {
         VStack(spacing: 0) {
             CustomNavigationView(
                 title: "Filters",
                 backButtonClick: {
-                    presentationMode.wrappedValue.dismiss()
+                    navigationRouter.pop()
                 },
                 resetButtonClick: {
                     viewModel.resetFilters()
@@ -32,7 +32,12 @@ struct FiltersView: View {
                 DrinkMainButtonView(
                     title: "SEARCH",
                     action: {
-                        return //TODO: search with selected filters
+                        let filters = Filters(
+                            category: viewModel.selectedCategory,
+                            glass: viewModel.selectedGlass,
+                            alcoholic: viewModel.selectedAlcoholType
+                        )
+                        navigationRouter.push(to: .drinkList(filters: filters))
                     },
                     isEnabled: viewModel.isFilterEnabled
                 )

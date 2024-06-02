@@ -10,7 +10,7 @@ import SwiftUI
 import RxSwift
 import RxCocoa
 
-class FiltersViewModel: ObservableObject {
+final class FiltersViewModel: ObservableObject {
     
     @Published var selectedCategory: CategoryItem?
     @Published var selectedGlass: GlassItem?

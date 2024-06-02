@@ -44,4 +44,27 @@ extension Router {
             return Router(path: path, params: [type.rawValue: "list"])
         }
     }
+    
+    enum CocktailsFilter {
+        static let path = "/filter.php"
+        
+        static func filterDrinks(category: String?, glass: String?, alcoholic: String?) -> Router {
+            var params: [String: String] = [:]
+                
+            if let category = category {
+                params["c"] = category
+            }
+            if let glass = glass {
+                params["g"] = glass
+            }
+            if let alcoholic = alcoholic {
+                params["a"] = alcoholic
+            }
+            
+            return Router(
+                path: path,
+                params: params
+            )
+        }
+    }
 }

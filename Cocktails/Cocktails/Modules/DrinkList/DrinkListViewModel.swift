@@ -13,25 +13,33 @@ import RxCocoa
 final class DrinkListViewModel: ObservableObject {
     
     @Published var contentType: DrinkListContentType = .loading
-    @Published var drink: Drink?
-    @Published var showRandomDetails = false
     
     private let searchText = BehaviorSubject<String>(value: "")
+    private let filters: Filters?
     private let disposeBag = DisposeBag()
     
     private let service: Service.Cocktails
 
-    init(service: Service.Cocktails = .shared) {
+    init(service: Service.Cocktails = .shared, filters: Filters?) {
         self.service = service
-        setupBinding()
+        self.filters = filters
+        if let filters {
+            fetchFilteredDrinks(
+                category: filters.category?.strCategory,
+                glass: filters.glass?.strGlass,
+                alcoholic: filters.alcoholic?.strAlcoholic
+            )
+        } else {
+            setupBinding()
+        }
+    }
+    
+    var isFromFilters: Bool {
+        filters != nil
     }
     
     func onSearch(string: String) {
         searchText.onNext(string)
-    }
-    
-    func getRandomDrink() {
-        fetchRandomDrink()
     }
 }
 
@@ -61,15 +69,22 @@ private extension DrinkListViewModel {
             .disposed(by: disposeBag)
     }
     
-    func fetchRandomDrink() {
+    func fetchFilteredDrinks(category: String?, glass: String?, alcoholic: String?) {
         service
-            .getRandomDrink()
-            .asObservable()
-            .map { $0.drinks?.first }
-            .subscribe(onNext: { [weak self] drink in
-                self?.drink = drink
-                self?.showRandomDetails = true
+            .getFilteredDrinks(category: category, glass: glass, alcoholic: alcoholic)
+            .map { [weak self] model -> DrinkListContentType in
+                guard let self else { return .error }
+                if let drinks = model.drinks {
+                    return .content(drinks: drinks)
+                } else {
+                    return .empty
+                }
+            }
+            .asDriver(onErrorJustReturn: .error)
+            .drive(onNext: { [weak self] in
+                self?.contentType = $0
             })
             .disposed(by: disposeBag)
+        
     }
 }

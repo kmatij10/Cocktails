@@ -15,6 +15,7 @@ protocol DrinksServiceProtocol {
     func getCategories() -> Single<CategoryList>
     func getGlass() -> Single<GlassList>
     func getAlcoholic() -> Single<AlcoholicList>
+    func getFilteredDrinks(category: String?, glass: String?, alcoholic: String?) -> Single<Drinks>
 }
 
 extension Service {
@@ -61,5 +62,10 @@ extension Service.Cocktails: DrinksServiceProtocol {
     func getAlcoholic() -> Single<AlcoholicList> {
         return service
             .request(AlcoholicList.self, router: .CocktailsFilters.filter(type: .alcoholic))
+    }
+    
+    func getFilteredDrinks(category: String?, glass: String?, alcoholic: String?) -> Single<Drinks> {
+        return service
+            .request(Drinks.self, router: .CocktailsFilter.filterDrinks(category: category, glass: glass, alcoholic: alcoholic))
     }
 }

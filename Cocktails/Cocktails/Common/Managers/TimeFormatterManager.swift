@@ -20,7 +20,6 @@ class TimeFormatterManager: TimeFormatterManagerInterface {
     private init() {
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
     }
     
     func formattedTimestamp(from dateString: String?) -> String {

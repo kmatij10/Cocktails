@@ -18,9 +18,9 @@ final class DrinkListViewModel: ObservableObject {
     private let filters: Filters?
     private let disposeBag = DisposeBag()
     
-    private let service: Service.Cocktails
+    private let service: DrinksServiceProtocol
 
-    init(service: Service.Cocktails = .shared, filters: Filters?) {
+    init(service: DrinksServiceProtocol = Service.Cocktails.shared, filters: Filters?) {
         self.service = service
         self.filters = filters
         if let filters {
@@ -55,7 +55,7 @@ private extension DrinkListViewModel {
                     .getDrinks(search: searchText)
                     .asObservable()
                     .map { model in
-                        if let drinks = model.drinks {
+                        if let drinks = model.drinks, !drinks.isEmpty {
                             return .content(drinks: drinks)
                         } else {
                             return .empty

@@ -17,4 +17,16 @@ struct Filters: Equatable {
     let category: CategoryItem?
     let glass: GlassItem?
     let alcoholic: AlcoholicItem?
+    
+    var categoryUnderscore: String? {
+        category?.strCategory?.replacingOccurrences(of: " ", with: "_")
+    }
+    
+    var glassUnderscore: String? {
+        glass?.strGlass?.replacingOccurrences(of: " ", with: "_")
+    }
+    
+    var alcoholicUnderscore: String? {
+        alcoholic?.strAlcoholic?.replacingOccurrences(of: " ", with: "_")
+    }
 }

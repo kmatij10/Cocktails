@@ -25,9 +25,9 @@ final class DrinkListViewModel: ObservableObject {
         self.filters = filters
         if let filters {
             fetchFilteredDrinks(
-                category: filters.category?.strCategory,
-                glass: filters.glass?.strGlass,
-                alcoholic: filters.alcoholic?.strAlcoholic
+                category: filters.categoryUnderscore,
+                glass: filters.glassUnderscore,
+                alcoholic: filters.alcoholicUnderscore
             )
         } else {
             setupBinding()
@@ -72,8 +72,7 @@ private extension DrinkListViewModel {
     func fetchFilteredDrinks(category: String?, glass: String?, alcoholic: String?) {
         service
             .getFilteredDrinks(category: category, glass: glass, alcoholic: alcoholic)
-            .map { [weak self] model -> DrinkListContentType in
-                guard let self else { return .error }
+            .map { model -> DrinkListContentType in
                 if let drinks = model.drinks {
                     return .content(drinks: drinks)
                 } else {

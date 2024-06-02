@@ -20,6 +20,13 @@ struct DrinkListView: View {
             case .content(let drinks):
                 if !viewModel.isFromFilters {
                     createHeader()
+                } else {
+                    CustomNavigationView(
+                        title: "Filter results: \(drinks.count)",
+                        backButtonClick: {
+                            navigationRouter.pop(count: 2)
+                        }
+                    )
                 }
                 ZStack(alignment: .bottom) {
                     createcontent(drinks: drinks)

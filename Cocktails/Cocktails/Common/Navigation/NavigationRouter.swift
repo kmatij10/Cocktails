@@ -22,4 +22,8 @@ final class NavigationRouter: ObservableObject {
     func pop() {
         routes.removeLast()
     }
+    
+    func pop(count: Int) {
+        routes.removeLast(count)
+    }
 }

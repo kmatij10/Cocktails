@@ -17,10 +17,10 @@ final class FiltersViewModel: ObservableObject {
     @Published var selectedAlcoholType: AlcoholicItem?
     @Published var contentType: FiltersContentType = .loading
     
-    private let service: Service.Cocktails
+    private let service: DrinksServiceProtocol
     private let disposeBag = DisposeBag()
     
-    init(service: Service.Cocktails = .shared) {
+    init(service: DrinksServiceProtocol = Service.Cocktails.shared) {
         self.service = service
         setupBinding()
     }

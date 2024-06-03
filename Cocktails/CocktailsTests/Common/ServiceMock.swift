@@ -30,7 +30,7 @@ class ServiceMock: DrinksServiceProtocol {
         } else if shouldReturnEmpty {
             return Single.just(Drinks(drinks: []))
         }
-        let drinks = drinksMock.randomDrink
+        let drinks = drinksMock.selectedDrink
         return .just(drinks)
     }
     

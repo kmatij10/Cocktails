@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7149613A2C0DFFE2000B7D3F /* DrinkDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714961392C0DFFE2000B7D3F /* DrinkDetailsViewModelTests.swift */; };
+		7149613C2C0E05D7000B7D3F /* SelectedDrink.json in Resources */ = {isa = PBXBuildFile; fileRef = 7149613B2C0E05D7000B7D3F /* SelectedDrink.json */; };
+		7149613E2C0E0D28000B7D3F /* FiltersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7149613D2C0E0D28000B7D3F /* FiltersViewModelTests.swift */; };
 		7170DBFF2C0CACC800915B3D /* DrinksMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DBFE2C0CACC800915B3D /* DrinksMock.swift */; };
 		7170DC012C0CADBF00915B3D /* MockHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DC002C0CADBF00915B3D /* MockHelpers.swift */; };
 		7170DC032C0CADFD00915B3D /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DC022C0CADFD00915B3D /* ServiceMock.swift */; };
@@ -94,6 +97,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		714961392C0DFFE2000B7D3F /* DrinkDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		7149613B2C0E05D7000B7D3F /* SelectedDrink.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SelectedDrink.json; sourceTree = "<group>"; };
+		7149613D2C0E0D28000B7D3F /* FiltersViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModelTests.swift; sourceTree = "<group>"; };
 		7170DBFE2C0CACC800915B3D /* DrinksMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksMock.swift; sourceTree = "<group>"; };
 		7170DC002C0CADBF00915B3D /* MockHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHelpers.swift; sourceTree = "<group>"; };
 		7170DC022C0CADFD00915B3D /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
@@ -266,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				7183EAD02C0C9C1800DBD7C2 /* DrinkListViewModelTests.swift */,
+				714961392C0DFFE2000B7D3F /* DrinkDetailsViewModelTests.swift */,
+				7149613D2C0E0D28000B7D3F /* FiltersViewModelTests.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -323,6 +331,7 @@
 				7183EADE2C0CA42100DBD7C2 /* FilteredDrinks.json */,
 				7183EAE02C0CA43F00DBD7C2 /* RandomDrink.json */,
 				7170DC062C0DF9B300915B3D /* DrinksSearch.json */,
+				7149613B2C0E05D7000B7D3F /* SelectedDrink.json */,
 			);
 			path = CocktailsTests;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				7183EADB2C0CA3A500DBD7C2 /* Alcoholic.json in Resources */,
 				7183EAE12C0CA43F00DBD7C2 /* RandomDrink.json in Resources */,
 				7170DC072C0DF9B300915B3D /* DrinksSearch.json in Resources */,
+				7149613C2C0E05D7000B7D3F /* SelectedDrink.json in Resources */,
 				7183EAD92C0CA38900DBD7C2 /* Glass.json in Resources */,
 				7183EADF2C0CA42100DBD7C2 /* FilteredDrinks.json in Resources */,
 				7183EAD32C0CA16600DBD7C2 /* Drinks.json in Resources */,
@@ -688,12 +698,14 @@
 			files = (
 				7183EACE2C0C9B9100DBD7C2 /* NavigationRouterTests.swift in Sources */,
 				7170DC012C0CADBF00915B3D /* MockHelpers.swift in Sources */,
+				7149613E2C0E0D28000B7D3F /* FiltersViewModelTests.swift in Sources */,
 				7170DC052C0CB08D00915B3D /* PublisherExtensions.swift in Sources */,
 				71A7876D2C078E3F0090E59D /* CocktailsTests.swift in Sources */,
 				7170DBFF2C0CACC800915B3D /* DrinksMock.swift in Sources */,
 				7183EAC52C08E9CA00DBD7C2 /* TimeFormatterManagerTest.swift in Sources */,
 				7183EAD12C0C9C1800DBD7C2 /* DrinkListViewModelTests.swift in Sources */,
 				7170DC032C0CADFD00915B3D /* ServiceMock.swift in Sources */,
+				7149613A2C0DFFE2000B7D3F /* DrinkDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,11 +13,15 @@ final class DrinkDetailsViewModel: ObservableObject {
     
     @Published var contentType: DrinkDetailsContentType = .loading
     @Published var drinkTitle: String?
-    private let service: Service.Cocktails
+    private let service: DrinksServiceProtocol
     private let timeFormatterManager: TimeFormatterManagerInterface
     private let disposeBag = DisposeBag()
 
-    init(id: String?, service: Service.Cocktails = .shared, timeFormatterManager: TimeFormatterManager = .shared) {
+    init(
+        id: String?,
+        service: DrinksServiceProtocol = Service.Cocktails.shared,
+        timeFormatterManager: TimeFormatterManagerInterface = TimeFormatterManager.shared
+    ) {
         self.timeFormatterManager = timeFormatterManager
         self.service = service
         if let id {

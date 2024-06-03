@@ -7,13 +7,7 @@
 
 import Foundation
 
-struct Filters: Equatable {
-    static func == (lhs: Filters, rhs: Filters) -> Bool {
-        lhs.category == rhs.category &&
-        lhs.glass == rhs.glass &&
-        lhs.alcoholic == rhs.alcoholic
-    }
-    
+struct Filters {
     let category: CategoryItem?
     let glass: GlassItem?
     let alcoholic: AlcoholicItem?
@@ -28,5 +22,14 @@ struct Filters: Equatable {
     
     var alcoholicUnderscore: String? {
         alcoholic?.strAlcoholic?.replacingOccurrences(of: " ", with: "_")
+    }
+}
+
+extension Filters: Equatable {
+    
+    static func == (lhs: Filters, rhs: Filters) -> Bool {
+        lhs.category == rhs.category &&
+        lhs.glass == rhs.glass &&
+        lhs.alcoholic == rhs.alcoholic
     }
 }

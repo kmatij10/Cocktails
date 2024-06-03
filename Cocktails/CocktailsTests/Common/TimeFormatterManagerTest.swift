@@ -45,7 +45,7 @@ final class TimeFormatterManagerTest: XCTestCase {
         let thisWeekDate = calendar.date(byAdding: .day, value: -2, to: today)!
         let dateString = dateFormatter.string(from: thisWeekDate)
         let result = timeFormatterManager.formattedTimestamp(from: dateString)
-        let expected = calendar.isDate(thisWeekDate, equalTo: today, toGranularity: .weekOfYear) ? "This week" : "This Month"
+        let expected = calendar.isDate(thisWeekDate, equalTo: today, toGranularity: .weekOfYear) ? "This week" : "This month"
         XCTAssertEqual(result, expected)
     }
         

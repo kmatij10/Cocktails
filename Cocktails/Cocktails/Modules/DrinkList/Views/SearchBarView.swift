@@ -21,7 +21,7 @@ struct SearchBarView: View {
                 .frame(width: 18, height: 18)
                 .foregroundColor(.black)
                 .padding(.leading, 10)
-            SearchTextField(searchText: $searchText, onClear: onClear, isFocused: $isFocused)
+            SearchTextField(searchText: $searchText, isFocused: $isFocused, onClear: onClear)
                 .onChange(of: searchText) {
                     onSearch(searchText)
                 }
@@ -34,10 +34,8 @@ struct SearchBarView: View {
 
 struct SearchTextField: View {
     @Binding var searchText: String
-    let onClear: () -> Void
-    
     @Binding var isFocused: Bool
-    
+    let onClear: () -> Void
     @FocusState private var isTextFieldFocused
     
     var body: some View {

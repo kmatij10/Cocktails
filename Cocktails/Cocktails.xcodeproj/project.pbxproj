@@ -388,6 +388,7 @@
 		71EFC4A02C079073008531C8 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				71EFC4B62C079376008531C8 /* Constants.swift */,
 				7183EAA72C08A55200DBD7C2 /* Assets.xcassets */,
 			);
 			path = Supporting;
@@ -420,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				71A7875B2C078E3E0090E59D /* CocktailsApp.swift */,
-				71EFC4B62C079376008531C8 /* Constants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";

@@ -33,42 +33,64 @@ final class DrinkListViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoading() {
+    func testLoading() throws {
         serviceMock.shouldReturnEmpty = false
         serviceMock.shouldReturnError = false
         viewModel = DrinkListViewModel(service: serviceMock, filters: nil)
         
-        let contentType = try! viewModel.$contentType.asObservable().toBlocking().first()
+        let contentType = try viewModel.$contentType.asObservable().toBlocking().first()
         
         XCTAssertEqual(contentType, .loading)
     }
     
-    func testFetchDrinks() {
+    func testFetchDrinks() throws {
         serviceMock.shouldReturnEmpty = false
         serviceMock.shouldReturnError = false
         viewModel = DrinkListViewModel(service: serviceMock, filters: nil)
         
-        let contentType = try! viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
+        let contentType = try viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
         
         XCTAssertEqual(contentType, .content(drinks: drinksMock.drinks.drinks!))
     }
     
-    func testFetchDrinksError() {
+    func testFetchDrinksWithSearch() throws {
+        serviceMock.shouldReturnEmpty = false
+        serviceMock.shouldReturnError = false
+        viewModel = DrinkListViewModel(service: serviceMock, filters: nil)
+        
+        viewModel.onSearch(string: "margarita")
+        
+        let contentType = try viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
+        
+        XCTAssertEqual(contentType, .content(drinks: drinksMock.drinksSearch.drinks!))
+    }
+    
+    func testFetchFilteredDrinks() throws {
+        serviceMock.shouldReturnEmpty = false
+        serviceMock.shouldReturnError = false
+        viewModel = DrinkListViewModel(service: serviceMock, filters: Filters(category: nil, glass: nil, alcoholic: nil))
+        
+        let contentType = try viewModel.$contentType.asObservable().toBlocking().first()
+        
+        XCTAssertEqual(contentType, .content(drinks: drinksMock.filteredDrinks.drinks!))
+    }
+    
+    func testFetchDrinksError() throws {
         serviceMock.shouldReturnEmpty = false
         serviceMock.shouldReturnError = true
         viewModel = DrinkListViewModel(service: serviceMock, filters: nil)
         
-        let contentType = try! viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
+        let contentType = try viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
         
         XCTAssertEqual(contentType, .error)
     }
     
-    func testFetchDrinksEmpty() {
+    func testFetchDrinksEmpty() throws {
         serviceMock.shouldReturnEmpty = true
         serviceMock.shouldReturnError = false
         viewModel = DrinkListViewModel(service: serviceMock, filters: nil)
         
-        let contentType = try! viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
+        let contentType = try viewModel.$contentType.asObservable().skip(1).toBlocking(timeout: 1).first()
         
         XCTAssertEqual(contentType, .empty)
     }

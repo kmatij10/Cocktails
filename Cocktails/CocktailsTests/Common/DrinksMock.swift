@@ -39,4 +39,9 @@ class DrinksMock {
         let drinks = try? JSONDecoder().decode(Drinks.self, from: MockHelpers.loadJsonFile(named: "Drinks"))
         return drinks!
     }
+    
+    var drinksSearch: Drinks {
+        let drinks = try? JSONDecoder().decode(Drinks.self, from: MockHelpers.loadJsonFile(named: "DrinksSearch"))
+        return drinks!
+    }
 }

@@ -80,7 +80,12 @@ class ServiceMock: DrinksServiceProtocol {
         } else if shouldReturnEmpty {
             return Single.just(Drinks(drinks: []))
         }
-        let drinks = drinksMock.drinks
-        return .just(drinks)
+        if search == "margarita" {
+            let drinks = drinksMock.drinksSearch
+            return .just(drinks)
+        } else {
+            let drinks = drinksMock.drinks
+            return .just(drinks)
+        }
     }
 }

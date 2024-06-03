@@ -11,6 +11,7 @@
 		7170DC012C0CADBF00915B3D /* MockHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DC002C0CADBF00915B3D /* MockHelpers.swift */; };
 		7170DC032C0CADFD00915B3D /* ServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DC022C0CADFD00915B3D /* ServiceMock.swift */; };
 		7170DC052C0CB08D00915B3D /* PublisherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7170DC042C0CB08D00915B3D /* PublisherExtensions.swift */; };
+		7170DC072C0DF9B300915B3D /* DrinksSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 7170DC062C0DF9B300915B3D /* DrinksSearch.json */; };
 		7183EA972C08A34700DBD7C2 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EA962C08A34700DBD7C2 /* CustomNavigationView.swift */; };
 		7183EA9A2C08A38200DBD7C2 /* DrinkDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EA992C08A38200DBD7C2 /* DrinkDetailsHeaderView.swift */; };
 		7183EA9C2C08A3A700DBD7C2 /* DrinkTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7183EA9B2C08A3A700DBD7C2 /* DrinkTagsView.swift */; };
@@ -97,6 +98,7 @@
 		7170DC002C0CADBF00915B3D /* MockHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHelpers.swift; sourceTree = "<group>"; };
 		7170DC022C0CADFD00915B3D /* ServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMock.swift; sourceTree = "<group>"; };
 		7170DC042C0CB08D00915B3D /* PublisherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExtensions.swift; sourceTree = "<group>"; };
+		7170DC062C0DF9B300915B3D /* DrinksSearch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DrinksSearch.json; sourceTree = "<group>"; };
 		7183EA962C08A34700DBD7C2 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		7183EA992C08A38200DBD7C2 /* DrinkDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailsHeaderView.swift; sourceTree = "<group>"; };
 		7183EA9B2C08A3A700DBD7C2 /* DrinkTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTagsView.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				7183EADA2C0CA3A500DBD7C2 /* Alcoholic.json */,
 				7183EADE2C0CA42100DBD7C2 /* FilteredDrinks.json */,
 				7183EAE02C0CA43F00DBD7C2 /* RandomDrink.json */,
+				7170DC062C0DF9B300915B3D /* DrinksSearch.json */,
 			);
 			path = CocktailsTests;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 			files = (
 				7183EADB2C0CA3A500DBD7C2 /* Alcoholic.json in Resources */,
 				7183EAE12C0CA43F00DBD7C2 /* RandomDrink.json in Resources */,
+				7170DC072C0DF9B300915B3D /* DrinksSearch.json in Resources */,
 				7183EAD92C0CA38900DBD7C2 /* Glass.json in Resources */,
 				7183EADF2C0CA42100DBD7C2 /* FilteredDrinks.json in Resources */,
 				7183EAD32C0CA16600DBD7C2 /* Drinks.json in Resources */,
